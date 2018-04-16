@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>css进度条</title>
+	<style type="text/css">
+	#loading
+{
+	width: 500px;
+	height: 20px;
+	border: 2px solid #52b2e3;
+	position: relative;
+	margin: 40% auto;
+	border-radius: 10px;
+}
+
+#loading_1
+{
+	height: 20px;
+	position: absolute;
+	background-color: #F9FF9F;
+    animation:mymove 10s linear;
+    animation-fill-mode:forwards; //当动画完成后，保持最后一个属性值
+    animation-iteration-count:1;
+    box-shadow:0px 10px 5px #2bc0a7 inset;
+}
+@keyframes mymove
+{
+    from{width: 0px;}
+    to{width: 100%;}
+}
+
+-webkit-@keyframes mymove
+{
+    from{width: 0px;}
+    to{width: 100%;}
+}
+
+-o-@keyframes mymove
+{
+    from{width: 0px;}
+    to{width: 100%;}
+}
+
+-ms-@keyframes mymove
+{
+    from{width: 0px;}
+    to{width: 100%;}
+}
+
+-moz-@keyframes mymove
+{
+    from{width: 0px;}
+    to{width: 100%;}
+}
+
+#loadtext
+{
+	position: absolute;
+	left: 458px;
+	font-size: 16px;
+	color:#f97a74;
+	font-weight: bold;
+}	
+	</style>
+</head>
+<body>
+<div id="loading">
+	<div id="loading_1">
+		<div id="cover" style="display: none;width: 500px;height: 20px;z-index: 100;position: absolute;text-align: center;">加载完成</div>
+        <div id="loadtext"><span id="one"></span>%</div>
+	</div>
+</div>
+<script>
+	
+        var i=0;
+        function jishi(){
+        i+=1;
+        var o = document.getElementById('one');
+        o.innerHTML = i;
+        if(i<100) 
+        setTimeout('jishi()',98);
+        }
+    	
+    window.onload=function (){
+    	jishi();
+    	function cover(){
+    		var a = document.getElementById('cover');
+    		a.style.display = 'block';
+        }
+        setTimeout('cover()',1000)
+        }
+</script>
+
+</body>
+</html>
